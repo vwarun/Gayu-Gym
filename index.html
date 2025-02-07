@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gayathri Running to Gym</title>
+    <style>
+        body {
+            background-color: #e0e0e0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .scene {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, #87CEEB, #f0f0f0);
+        }
+
+        /* Gym at the top */
+        .gym {
+            position: absolute;
+            top: 10px;
+            left: 70%;
+            width: 140px;
+            height: 140px;
+            background: #8B0000;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid black;
+        }
+        .gym::before {
+            content: "GYM";
+            position: absolute;
+            top: -30px;
+            font-size: 22px;
+            font-weight: bold;
+            color: black;
+        }
+        .door {
+            width: 50px;
+            height: 80px;
+            background: #654321;
+            position: absolute;
+            bottom: 5px;
+            border: 2px solid black;
+        }
+
+        /* Gayathri */
+        .gayathri {
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            width: 60px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-weight: bold;
+        }
+        .name-tag {
+            font-size: 14px;
+            color: black;
+            margin-bottom: 5px;
+        }
+        .head {
+            width: 45px;
+            height: 45px;
+            background: #a36a3e;
+            border-radius: 50%;
+            position: relative;
+        }
+        .hair {
+            width: 50px;
+            height: 30px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            left: -2px;
+        }
+        .body {
+            width: 50px;
+            height: 65px;
+            background: #ff5733;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .arms {
+            position: absolute;
+            width: 60px;
+            height: 10px;
+            background: #a36a3e;
+            top: 15px;
+        }
+        .legs {
+            width: 30px;
+            height: 50px;
+            background: #3b3b3b;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="gym">
+            <div class="door"></div>
+        </div>
+        <div class="gayathri">
+            <div class="name-tag">Gayathri</div>
+            <div class="head">
+                <div class="hair"></div>
+            </div>
+            <div class="body">
+                <div class="arms"></div>
+            </div>
+            <div class="legs"></div>
+        </div>
+    </div>
+
+    <script>
+        let gayathri = document.querySelector(".gayathri");
+        let position = 10;
+        let speed = 6;
+
+        function run() {
+            if (position < window.innerWidth * 0.6) { // Stops before reaching the gym
+                position += speed;
+                gayathri.style.transform = `translateX(${position}px)`;
+                speed -= 0.03; // Slows down over time
+                if (speed > 0.5) {
+                    requestAnimationFrame(run);
+                }
+            }
+        }
+
+        run();
+    </script>
+</body>
+</html>
